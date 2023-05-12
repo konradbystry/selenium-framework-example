@@ -3,24 +3,24 @@ pipeline {
     stages {
         stage('Build test code') {
             steps {
-                bat 'mvn clean install -DskipTests' // Budowanie testów
+                bat 'mvn clean install -DskipTests' // Build tests
             }
         }
         stage('Run selenium grid') {
             steps {
-                bat 'docker compose up -d' // Uruchiomienie Docker Selenium
+                bat 'docker compose up -d' // Run Docker Selenium
             }
         }
         stage('Execute test') {
             steps {
-                bat 'mvn test' // Uruchomienie testów
-                bat 'docker compose down' // Wyłączenie Docker Selenium, wyłączenie kontenerów
+                bat 'mvn test' // Run tests
+                bat 'docker compose down' // Shut down Docker Selenium
             }
         }
     }
     post {
         always {
-            script { // Wygenerowanie raportu Allurowego
+            script { // Generate Allure report
                 allure([
                         includeProperties: false,
                         jdk              : '',
