@@ -8,13 +8,13 @@ pipeline {
         }
         stage('Run selenium grid') {
             steps {
-                bat 'docker-compose up -d' // Uruchiomienie Docker Selenium
+                bat 'docker compose up -d' // Uruchiomienie Docker Selenium
             }
         }
         stage('Execute test') {
             steps {
                 bat 'mvn test' // Uruchomienie testów
-                bat 'docker-compose down' // Wyłączenie Docker Selenium, wyłączenie kontenerów
+                bat 'docker compose down' // Wyłączenie Docker Selenium, wyłączenie kontenerów
             }
         }
     }
