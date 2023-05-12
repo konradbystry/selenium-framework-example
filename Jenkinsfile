@@ -3,18 +3,18 @@ pipeline {
     stages {
         stage('Build test code') {
             steps {
-                sh 'mvn clean install -DskipTests' // Budowanie testów
+                bat 'mvn clean install -DskipTests' // Budowanie testów
             }
         }
         stage('Run selenium grid') {
             steps {
-                sh 'docker-compose up -d' // Uruchiomienie Docker Selenium
+                bat 'docker-compose up -d' // Uruchiomienie Docker Selenium
             }
         }
         stage('Execute test') {
             steps {
-                sh 'mvn test' // Uruchomienie testów
-                sh 'docker-compose down' // Wyłączenie Docker Selenium, wyłączenie kontenerów
+                bat 'mvn test' // Uruchomienie testów
+                bat 'docker-compose down' // Wyłączenie Docker Selenium, wyłączenie kontenerów
             }
         }
     }
