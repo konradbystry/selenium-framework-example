@@ -28,8 +28,8 @@ public class PositiveLoginTests extends TestBase{
                 .typeIntoUsernameField("j2ee")
                 .typeIntoPasswordField("j2ee")
                 .clickSignOnButton()
-                .assertThatDogBannerIsDisplayed()
-                .takeScreenchotOfDogBanner();
+                .assertThatDogBannerIsDisplayed();
+                //.takeScreenchotOfDogBanner();
 
 
 
